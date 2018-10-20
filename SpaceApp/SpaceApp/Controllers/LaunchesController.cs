@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,11 +10,26 @@ namespace SpaceApp.Controllers
 
     public class LaunchesController : Controller
     {
-        public static List<Trajectory> launches;
+        public static List<Trajectory> trajectories = new List<Trajectory>();
         // GET: Launches
-        public ActionResult Index()
+        public JsonResult Index(string dateFrom, string dateTo)
         {
-            return View();
+            DateTime dateF = DateTime.ParseExact(dateFrom,"yyyy-mm-dd",null);
+            DateTime dateT = DateTime.ParseExact(dateTo, "yyyy-mm-dd", null);
+
+            List<Trajectory> launches = new List<Trajectory>();
+            foreach (Trajectory traj in trajectories)
+            {
+                DateTime myDate = DateTime.ParseExact(traj.net, "yyyy-mm-dd", null);
+
+                if ((myDate.Date > dateF.Date) && (myDate < dateT.Date))
+                {
+                    launches.Add(traj);
+                }
+            }
+
+            //return JsonConvert.SerializeObject(launches);
+            return Json(launches);
         }
     }
 }
