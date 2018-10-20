@@ -27,11 +27,13 @@ namespace SpaceApp.Controllers
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential(from,password);
             mail.Subject = "TEST";
+            mail.IsBodyHtml = true;
             mail.Body = "ovde neki text";
             mail.From = new MailAddress(from);
             mail.To.Add("tetrakis13@gmail.com");
             SmtpServer.EnableSsl = true;
-            //ahahha
+
+  
             SmtpServer.Send(mail);
         }
     }
