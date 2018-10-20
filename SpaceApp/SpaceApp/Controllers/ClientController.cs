@@ -23,7 +23,7 @@ namespace SpaceApp.Controllers
                          float latitude,
                          float longitude)
         {
-            Trajectory.Location location = new Trajectory.Location();
+            Trajectory.Location location = new Trajectory.Location(idp,namep,latitude,longitude);
             LaunchesController.launches.Add(new Trajectory(id, name, net, parogee, loan, argument_of_periapsis,location));
             return View();
         }
@@ -52,15 +52,35 @@ namespace SpaceApp.Controllers
         }
 
         public class Location
+        {
+            public List<Pads> pads;
+            private int idp;
+            private string namep;
+            private float latitude;
+            private float longitude;
+
+            public Location(int idp, string namep, float latitude, float longitude)
             {
-                public List<Pads> pads;
-                public class Pads
+                pads = new List<Pads>();
+                pads.Add(new Pads(idp, namep, latitude, longitude));
+            }
+            public class Pads
+            {
+                public int id;
+                public string name;
+                public float latitude;
+                public float longitude;
+                private int idp;
+                private string namep;
+
+                public Pads(int idp, string namep, float latitude, float longitude)
                 {
-                    public int id;
-                    public string name;
-                    public float latitude;
-                    public float longitude;
+                    this.id = idp;
+                    this.name = namep;
+                    this.latitude = latitude;
+                    this.longitude = longitude;
                 }
             }
+        }
     }
 }
