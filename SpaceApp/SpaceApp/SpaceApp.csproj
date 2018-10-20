@@ -6957,9 +6957,11 @@
     <Content Include="Content\images\earth-from-space.jpg" />
     <Content Include="Content\images\gallery-logo.jpg" />
     <Content Include="Content\images\guiana.jpg" />
+    <Content Include="Content\images\icons\baikonur.jpg" />
     <Content Include="Content\images\icons\clock-icon.png" />
     <Content Include="Content\images\icons\favicon.png" />
     <Content Include="Content\images\icons\icon-position-map.png" />
+    <Content Include="Content\images\icons\launchspots-1.jpg" />
     <Content Include="Content\images\icons\logo.png" />
     <Content Include="Content\images\icons\logo2.png" />
     <Content Include="Content\images\icons\map-icon.png" />
