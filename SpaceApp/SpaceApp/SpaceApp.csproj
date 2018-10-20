@@ -6948,6 +6948,7 @@
     <Content Include="Content\Gallery.html" />
     <Content Include="Content\gmaps.js" />
     <Content Include="Content\Globe.html" />
+    <Content Include="Content\images\arenosillo.jpeg" />
     <Content Include="Content\images\blog-1.jpg" />
     <Content Include="Content\images\blog-2.jpg" />
     <Content Include="Content\images\blog-3.jpg" />
@@ -6955,6 +6956,7 @@
     <Content Include="Content\images\blog-detail-img.png" />
     <Content Include="Content\images\earth-from-space.jpg" />
     <Content Include="Content\images\gallery-logo.jpg" />
+    <Content Include="Content\images\guiana.jpg" />
     <Content Include="Content\images\icons\clock-icon.png" />
     <Content Include="Content\images\icons\favicon.png" />
     <Content Include="Content\images\icons\icon-position-map.png" />
@@ -6971,6 +6973,8 @@
     <Content Include="Content\images\icons\rocket-logo.png" />
     <Content Include="Content\images\icons\video-16-9.jpg" />
     <Content Include="Content\images\intro-bg-1.jpg" />
+    <Content Include="Content\images\jiuquan.jpg" />
+    <Content Include="Content\images\kennedy.jpg" />
     <Content Include="Content\images\launch.jpg" />
     <Content Include="Content\images\launches-bg.jpg" />
     <Content Include="Content\images\launchspot-1.jpg" />
@@ -6978,6 +6982,7 @@
     <Content Include="Content\images\launchspot-5.jpg" />
     <Content Include="Content\images\launchspot.jpg" />
     <Content Include="Content\images\lunchspot-3.jpg" />
+    <Content Include="Content\images\plesetsk.jpg" />
     <Content Include="Content\images\rocket-launch-1.jpg" />
     <Content Include="Content\images\rocket-launch-2.jpg" />
     <Content Include="Content\images\rocket-launch-3.jpg" />
@@ -6985,6 +6990,7 @@
     <Content Include="Content\images\rocket-launch-5.jpg" />
     <Content Include="Content\images\rocket-launch.jpg" />
     <Content Include="Content\images\slide-1.jpg" />
+    <Content Include="Content\images\vikram.jpg" />
     <Content Include="Content\includes\contact-form.php" />
     <Content Include="Content\index.html" />
     <Content Include="Content\js\main.js" />
@@ -6992,6 +6998,7 @@
     <Content Include="Content\js\slick-custom.js" />
     <Content Include="Content\LaunchDetails.html" />
     <Content Include="Content\launches.html" />
+    <Content Include="Content\launchspots.html" />
     <Content Include="Content\ListSearch.html" />
     <Content Include="Content\reservation.html" />
     <Content Include="Content\vendor\animate\animate.css" />
