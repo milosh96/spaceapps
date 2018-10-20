@@ -81,12 +81,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -149,7 +158,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LaunchesController.cs" />
     <Compile Include="Controllers\MailerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -6937,6 +6948,7 @@
     <Content Include="Content\Gallery.html" />
     <Content Include="Content\gmaps.js" />
     <Content Include="Content\Globe.html" />
+    <Content Include="Content\images\arenosillo.jpeg" />
     <Content Include="Content\images\blog-1.jpg" />
     <Content Include="Content\images\blog-2.jpg" />
     <Content Include="Content\images\blog-3.jpg" />
@@ -6944,9 +6956,12 @@
     <Content Include="Content\images\blog-detail-img.png" />
     <Content Include="Content\images\earth-from-space.jpg" />
     <Content Include="Content\images\gallery-logo.jpg" />
+    <Content Include="Content\images\guiana.jpg" />
+    <Content Include="Content\images\icons\baikonur.jpg" />
     <Content Include="Content\images\icons\clock-icon.png" />
     <Content Include="Content\images\icons\favicon.png" />
     <Content Include="Content\images\icons\icon-position-map.png" />
+    <Content Include="Content\images\icons\launchspots-1.jpg" />
     <Content Include="Content\images\icons\logo.png" />
     <Content Include="Content\images\icons\logo2.png" />
     <Content Include="Content\images\icons\map-icon.png" />
@@ -6960,6 +6975,8 @@
     <Content Include="Content\images\icons\rocket-logo.png" />
     <Content Include="Content\images\icons\video-16-9.jpg" />
     <Content Include="Content\images\intro-bg-1.jpg" />
+    <Content Include="Content\images\jiuquan.jpg" />
+    <Content Include="Content\images\kennedy.jpg" />
     <Content Include="Content\images\launch.jpg" />
     <Content Include="Content\images\launches-bg.jpg" />
     <Content Include="Content\images\launchspot-1.jpg" />
@@ -6967,6 +6984,7 @@
     <Content Include="Content\images\launchspot-5.jpg" />
     <Content Include="Content\images\launchspot.jpg" />
     <Content Include="Content\images\lunchspot-3.jpg" />
+    <Content Include="Content\images\plesetsk.jpg" />
     <Content Include="Content\images\rocket-launch-1.jpg" />
     <Content Include="Content\images\rocket-launch-2.jpg" />
     <Content Include="Content\images\rocket-launch-3.jpg" />
@@ -6974,6 +6992,7 @@
     <Content Include="Content\images\rocket-launch-5.jpg" />
     <Content Include="Content\images\rocket-launch.jpg" />
     <Content Include="Content\images\slide-1.jpg" />
+    <Content Include="Content\images\vikram.jpg" />
     <Content Include="Content\includes\contact-form.php" />
     <Content Include="Content\index.html" />
     <Content Include="Content\js\main.js" />
@@ -6981,6 +7000,7 @@
     <Content Include="Content\js\slick-custom.js" />
     <Content Include="Content\LaunchDetails.html" />
     <Content Include="Content\launches.html" />
+    <Content Include="Content\launchspots.html" />
     <Content Include="Content\ListSearch.html" />
     <Content Include="Content\reservation.html" />
     <Content Include="Content\vendor\animate\animate.css" />
@@ -8295,18 +8315,22 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\cesium\Apps\Sandcastle\gallery\development\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Launches\" />
     <Folder Include="Views\Mailer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
