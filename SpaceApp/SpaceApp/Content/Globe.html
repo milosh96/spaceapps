@@ -1,6 +1,36 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/rocket-logo-3.jpg" />
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/lightbox2/css/lightbox.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
     <script src="../Scripts/jquery-1.10.2.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/bootstrap-datepicker.min.js"></script>
@@ -17,9 +47,16 @@
     <style>
         @import url(cesium/Build/Cesium/Widgets/widgets.css);
         @import url(bootstrap.css);
+
         .cesium-viewer-bottom {
             display: none;
         }
+        #menu{
+            position:absolute;
+            top:100px;
+            right:0px;
+        }
+
         html, body, #cesiumContainer {
             width: 100%;
             height: 100%;
@@ -30,6 +67,16 @@
 
         .slider-horizontal {
             height: 10px;
+        }
+
+        .cesium-viewer-toolbar {
+            left: 5px;
+            top:100px;
+        }
+
+        .cesium-infoBox {
+            left: 5px;
+            top: 140px;
         }
     </style>
     <script>
@@ -72,7 +119,7 @@
             var bestD = 1000000000000;
             var bid = 0;
             var bestIncl;
-            for (var inclination = -90; inclination < 90; inclination += 5)
+            for (var inclination = -90; inclination < 90; inclination += 1)
             {
                 var parogee = 400000;
                 var appogee = 400000;
@@ -97,7 +144,7 @@
 
                 var positions = [];
 
-                for (var i = -180; i <= 160; i += 1)
+                for (var i = -180; i <= 180; i += 1)
                 {
                     //r = a(1-e^2)/ 1+e\cos \theta}
                     var radius = semi_major * (1 - Math.pow(e, 2)) / (1 + e * Math.cos(Cesium.Math.toRadians(i)));
@@ -158,7 +205,7 @@
 
             var positions = [];
             var dr = 5;
-            for (var i = bid; i < 180; i += 0.1)
+            for (var i = bid; i < 180; i += 1)
             {
                 //r = a(1-e^2)/ 1+e\cos \theta}
                 var radius = semi_major * (1 - Math.pow(e, 2)) / (1 + e * Math.cos(Cesium.Math.toRadians(i)));
@@ -168,7 +215,7 @@
                 }
                 else
                 {
-                    dr += 2000;
+                    dr += 20000;
                 }
                 if (dr > 0) dr = 0;
                 //create point
@@ -186,9 +233,9 @@
                 var final = Cesium.Matrix3.multiplyByVector(aop_m, raan, new Cesium.Cartesian3());
                 positions.push(final);
             }
-            for (var i = -180; i < bid - 30; i += 0.1)
+            for (var i = -180; i < bid - 30; i += 1)
             {
-                if (dr < 0) dr += 2000;
+                if (dr < 0) dr += 20000;
                 if (dr > 0) dr = 0;
                 //r = a(1-e^2)/ 1+e\cos \theta}
                 var radius = semi_major * (1 - Math.pow(e, 2)) / (1 + e * Math.cos(Cesium.Math.toRadians(i)));
@@ -210,10 +257,15 @@
             return positions;
 
         }
-        function drawPath()
+        var orbit = null;
+        var oldPath = null;
+        function drawPath(long, lat)
         {
-            var positions = getOrbitThrough(63.31, 45.51);
-            console.log(positions);
+            var positions = getOrbitThrough(long, lat);
+            if (oldPath != null)
+            {
+                viewer.entities.remove(oldPath);
+            }
             var entity = viewer.entities.add({
                 polyline: {
                     positions: positions,
@@ -222,8 +274,7 @@
                     material: Cesium.Color.RED
                 }
             });
-
-            viewer.zoomTo(viewer.entities);
+            oldPath = entity;
         }
 
         var pads = {};
@@ -256,13 +307,12 @@
                 var long = pad.longitude;
                 var entity = viewer.entities.add({
                     position: Cesium.Cartesian3.fromDegrees(long, lat),
-                    id: "Launchpad: "+pad.name,
+                    id: "Launchpad: " + pad.name,
                     model: {
                         uri: 'rocket_red.glb',
                         minimumPixelSize: 40
                     }
                 });
-                console.log(entity);
             }
         }
         function pickEntity(windowPosition)
@@ -294,10 +344,16 @@
             {
                 launch = selectedPad.launches[launch];
                 $("#launchlist").append("<h4>" + launch.name + "</h4>")
+                $("#launchlist").append("<p>" + launch.net + "</h4>")
                 $("#launchlist").append("<a href='#'>Show details</a>")
-                $("#launchlist").append("<br/><a href='#' onclick>Show flight path</a>")
+                $("#launchlist").append(`<br/><a href='#' onclick='showPath(${selectedPad.id})'>Show flight path</a>`)
                 $("#launchlist").append("<hr/>")
             }
+        }
+        function showPath(padId)
+        {
+            pad = pads[padId];
+            drawPath(pad.longitude, pad.latitude);
         }
         $(document).ready(function ()
         {
@@ -335,21 +391,142 @@
     </script>
 </head>
 <body>
-    <div id="cesiumContainer" style="width:80%;float:left"></div>
-    <div id="menu" style="float:right;width:20%;">
+    <aside class="sidebar trans-0-4">
+        <!-- Button Hide sidebar -->
+        <button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
+
+        <!-- - -->
+        <ul class="menu-sidebar p-t-95 p-b-70">
+            <li class="t-center m-b-13">
+                <a href="index.html" class="txt19">Home</a>
+            </li>
+
+            <li class="t-center m-b-13">
+                <a href="launches.html" class="txt19">Launches</a>
+            </li>
+
+            <li class="t-center m-b-13">
+                <a href="launchspots.html" class="txt19">Launchspots</a>
+            </li>
+
+            <li class="t-center m-b-13">
+                <a href="blog.html" class="txt19">Blog</a>
+            </li>
+
+            <li class="t-center m-b-13">
+                <a href="gallery.html" class="txt19">Gallery</a>
+            </li>
+
+            <li class="t-center m-b-13">
+                <a href="about.html" class="txt19">About</a>
+            </li>
+
+            <li class="t-center m-b-33">
+                <a href="contact.html" class="txt19">Contact</a>
+            </li>
+        </ul>
+    </aside>
+    <header>
+        <!-- Header desktop -->
+        <div class="wrap-menu-header gradient1 trans-0-4">
+            <div class="container h-full">
+                <div class="wrap_header trans-0-3">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="images/icons/rocket-logo-3.jpg" alt="IMG-LOGO" data-logofixed="images/icons/rocket-logo-3.jpg">
+                        </a>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="wrap_menu p-l-45 p-l-0-xl">
+                        <nav class="menu">
+                            <ul class="main_menu">
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+
+                                <li>
+                                    <a href="launches.html">Launches</a>
+                                </li>
+
+                                <li>
+                                    <a href="launchspots.html">Launchspots</a>
+                                </li>
+
+                                <li>
+                                    <a href="blog.html">Blog</a>
+                                </li>
+
+                                <li>
+                                    <a href="gallery.html">Gallery</a>
+                                </li>
+
+                                <li>
+                                    <a href="about.html">About</a>
+                                </li>
+
+                                <li>
+                                    <a href="contact.html">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!-- Social -->
+                    <div class="social flex-w flex-l-m p-r-20">
+                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter m-l-21" aria-hidden="true"></i></a>
+
+                        <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="cesiumContainer" style="width:100%;float:left"></div>
+    <!--<div id="menu" style="float:right;width:20%;">
         From date:<br />
         <input type="datetime" class="form-control datepicker" id="datefrom" /><br />
         To date:<br />
-        <input type="datetime" class="form-control datepicker" id="dateto"/>
+        <input type="datetime" class="form-control datepicker" id="dateto" />
         <div id="launchlist"></div>
-    </div>
+    </div>-->-->
     <script>
-        viewer = new Cesium.Viewer('cesiumContainer',{
+        viewer = new Cesium.Viewer('cesiumContainer', {
             timeline: false,
             animation: false,
             homeButton: false,
 
         });
     </script>
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+    <script type="text/javascript" src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/parallax100/parallax100.js"></script>
+    <script type="text/javascript">
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
 </body>
+
 </html>
