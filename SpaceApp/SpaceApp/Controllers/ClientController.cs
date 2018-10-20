@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Collections;
+
+namespace SpaceApp.Controllers
+{
+
+    public class ClientController : Controller
+    {
+       
+        public ActionResult Index(
+                         int id,
+                         string name,
+                         string net,
+                         float parogee,
+                         float appogee,
+                         float loan,
+                         float argument_of_periapsis,   int idp,
+                         string namep,
+                         float latitude,
+                         float longitude)
+        {
+            Trajectory.Location location = new Trajectory.Location();
+            LaunchesController.launches.Add(new Trajectory(id, name, net, parogee, loan, argument_of_periapsis,location));
+            return View();
+        }
+       
+    }
+    public class Trajectory
+    {
+        public int id;
+        public string name;
+        public string net;
+        public float parogee;
+        public float appogee;
+        public float loan;
+        public float argument_of_periapsis;
+        public Location location;
+
+        public Trajectory(int id, string name, string net, float parogee, float loan, float argument_of_periapsis,Location location)
+        {
+            this.id = id;
+            this.name = name;
+            this.net = net;
+            this.parogee = parogee;
+            this.loan = loan;
+            this.argument_of_periapsis = argument_of_periapsis;
+            this.location = location;
+        }
+
+        public class Location
+            {
+                public List<Pads> pads;
+                public class Pads
+                {
+                    public int id;
+                    public string name;
+                    public float latitude;
+                    public float longitude;
+                }
+            }
+    }
+}
