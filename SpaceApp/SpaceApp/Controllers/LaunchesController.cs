@@ -21,7 +21,7 @@ namespace SpaceApp.Controllers
             foreach (Trajectory traj in trajectories)
             {
                 DateTime myDate = DateTime.ParseExact(traj.net, "yyyy-mm-dd", null);
-            
+
                 if ((myDate.Date > dateF.Date) && (myDate < dateT.Date))
                 {
                     launches.Add(traj);
@@ -29,12 +29,7 @@ namespace SpaceApp.Controllers
             }
 
             //return JsonConvert.SerializeObject(launches);
-            return Json(new LaunchReturn() { launches=launches},JsonRequestBehavior.AllowGet);
-        }
-
-        public class LaunchReturn
-        {
-            public List<Trajectory> launches;
+            return Json(launches, JsonRequestBehavior.AllowGet);
         }
     }
 }
