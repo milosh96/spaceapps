@@ -24,7 +24,7 @@ namespace SpaceApp.Controllers
                          float longitude)
         {
             Trajectory.Location location = new Trajectory.Location(idp,namep,latitude,longitude);
-            LaunchesController.launches.Add(new Trajectory(id, name, net, parogee, loan, argument_of_periapsis,location));
+            LaunchesController.trajectories.Add(new Trajectory(id, name, net, parogee, loan, argument_of_periapsis,location));
             return View();
         }
        

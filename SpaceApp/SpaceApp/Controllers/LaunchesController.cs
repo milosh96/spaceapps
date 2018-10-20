@@ -29,7 +29,7 @@ namespace SpaceApp.Controllers
             }
 
             //return JsonConvert.SerializeObject(launches);
-            return Json(launches);
+            return Json(launches, JsonRequestBehavior.AllowGet);
         }
     }
 }
