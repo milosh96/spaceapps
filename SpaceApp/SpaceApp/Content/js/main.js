@@ -50,13 +50,13 @@
 
     /*[ Daterangepicker ]
     ===========================================================*/
-    $('.my-calendar').daterangepicker({
+    /*$('.my-calendar').daterangepicker({
         "singleDatePicker": true,
         "showDropdowns": true,
         locale: {
-            format: 'DD/MM/YYYY'
+            format: 'YYYY-MM-DD'
         },
-    });
+    });*/
 
     var myCalendar = $('.my-calendar');
     var isClick = 0;
@@ -65,11 +65,11 @@
         isClick = 0;
     });
 
-    $(myCalendar).on('apply.daterangepicker',function(){ 
+    /*$(myCalendar).on('apply.daterangepicker',function(){ 
         isClick = 0;
-    });
+    });*/
 
-    $('.btn-calendar').on('click',function(e){ 
+    /*$('.btn-calendar').on('click',function(e){ 
         e.stopPropagation();
 
         if(isClick == 1) isClick = 0;   
@@ -85,9 +85,9 @@
         isClick = 1;
     });
 
-    $('.daterangepicker').on('click',function(e){ 
+    /*$('.daterangepicker').on('click',function(e){ 
         e.stopPropagation();
-    });
+    });*/
 
 
     /*[ Play video 01]
@@ -136,7 +136,7 @@
     var btnHideSidebar = $('.btn-hide-sidebar');
     var sidebar = $('.sidebar');
 
-    $(btnShowSidebar).on('click', function(){
+    /*$(btnShowSidebar).on('click', function(){
         $(sidebar).addClass('show-sidebar');
         $(ovlSideBar).addClass('show-overlay-sidebar');
     })
@@ -144,7 +144,7 @@
     $(btnHideSidebar).on('click', function(){
         $(sidebar).removeClass('show-sidebar');
         $(ovlSideBar).removeClass('show-overlay-sidebar');
-    })
+    })*/
 
     $(ovlSideBar).on('click', function(){
         $(sidebar).removeClass('show-sidebar');
