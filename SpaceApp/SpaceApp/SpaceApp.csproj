@@ -5236,7 +5236,6 @@
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\util.css" />
     <Content Include="Content\earth.js" />
-    <Content Include="Content\EarthSearch.html" />
     <Content Include="Content\fonts\courgette\OFL.txt" />
     <Content Include="Content\fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="Content\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -6949,6 +6948,7 @@
     <Content Include="Content\gmaps.js" />
     <Content Include="Content\Globe.html" />
     <Content Include="Content\images\arenosillo.jpeg" />
+    <Content Include="Content\images\baikonur.jpg" />
     <Content Include="Content\images\blog-1.jpg" />
     <Content Include="Content\images\blog-2.jpg" />
     <Content Include="Content\images\blog-3.jpg" />
@@ -6973,6 +6973,7 @@
     <Content Include="Content\images\icons\rocket-logo-2.jpg" />
     <Content Include="Content\images\icons\rocket-logo-3.jpg" />
     <Content Include="Content\images\icons\rocket-logo.png" />
+    <Content Include="Content\images\icons\rsz_rocket-logo-3.jpg" />
     <Content Include="Content\images\icons\video-16-9.jpg" />
     <Content Include="Content\images\intro-bg-1.jpg" />
     <Content Include="Content\images\jiuquan.jpg" />
@@ -6992,6 +6993,7 @@
     <Content Include="Content\images\rocket-launch-5.jpg" />
     <Content Include="Content\images\rocket-launch.jpg" />
     <Content Include="Content\images\slide-1.jpg" />
+    <Content Include="Content\images\space-wallpaper-1.jpg" />
     <Content Include="Content\images\vikram.jpg" />
     <Content Include="Content\includes\contact-form.php" />
     <Content Include="Content\index.html" />
