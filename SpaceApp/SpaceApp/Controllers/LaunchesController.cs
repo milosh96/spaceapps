@@ -29,7 +29,12 @@ namespace SpaceApp.Controllers
             }
 
             //return JsonConvert.SerializeObject(launches);
-            return Json(launches, JsonRequestBehavior.AllowGet);
+            return Json(new LaunchResult() { launches = launches }, JsonRequestBehavior.AllowGet);
+        }
+
+        public class LaunchResult
+        {
+            public List<Trajectory> launches;
         }
     }
 }
