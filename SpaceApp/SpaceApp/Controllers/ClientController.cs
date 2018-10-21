@@ -24,7 +24,7 @@ namespace SpaceApp.Controllers
                          float longitude)
         {
             Trajectory.Location location = new Trajectory.Location(idp,namep,latitude,longitude);
-            LaunchesController.trajectories.Add(new Trajectory(id, name, net, parogee, loan, argument_of_periapsis,location));
+            LaunchesController.trajectories.Add(new Trajectory(id, name, net, parogee, appogee, loan, argument_of_periapsis,location));
             return View();
         }
        
@@ -40,12 +40,13 @@ namespace SpaceApp.Controllers
         public float argument_of_periapsis;
         public Location location;
 
-        public Trajectory(int id, string name, string net, float parogee, float loan, float argument_of_periapsis,Location location)
+        public Trajectory(int id, string name, string net, float parogee,float appogee,float loan, float argument_of_periapsis,Location location)
         {
             this.id = id;
             this.name = name;
             this.net = net;
             this.parogee = parogee;
+            this.appogee = appogee;
             this.loan = loan;
             this.argument_of_periapsis = argument_of_periapsis;
             this.location = location;
