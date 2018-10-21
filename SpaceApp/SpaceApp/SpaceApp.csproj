@@ -168,6 +168,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\avatar-01.jpg" />
+    <Content Include="Content\images\avatar-02.jpg" />
     <Content Include="Content\images\blog-4.jpg" />
     <Content Include="Contents\bootstrap-datepicker.css" />
     <Content Include="Contents\bootstrap-datepicker.min.css" />
@@ -6981,6 +6983,7 @@
     <Content Include="Content\images\intro-bg-1.jpg" />
     <Content Include="Content\images\jiuquan.jpg" />
     <Content Include="Content\images\kennedy.jpg" />
+    <Content Include="Content\images\launch-detail.png" />
     <Content Include="Content\images\launch.jpg" />
     <Content Include="Content\images\launches-bg.jpg" />
     <Content Include="Content\images\launchspot-1.jpg" />
@@ -7004,10 +7007,7 @@
     <Content Include="Content\js\map-custom.js" />
     <Content Include="Content\js\slick-custom.js" />
     <Content Include="Content\LaunchDetails.html" />
-    <Content Include="Content\launches.html" />
     <Content Include="Content\launchspots.html" />
-    <Content Include="Content\ListSearch.html" />
-    <Content Include="Content\reservation.html" />
     <Content Include="Content\vendor\animate\animate.css" />
     <Content Include="Content\vendor\animsition\css\animsition.css" />
     <Content Include="Content\vendor\animsition\css\animsition.min.css" />
