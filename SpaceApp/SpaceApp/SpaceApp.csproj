@@ -168,6 +168,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\blog-4.jpg" />
     <Content Include="Contents\bootstrap-datepicker.css" />
     <Content Include="Contents\bootstrap-datepicker.min.css" />
     <Content Include="Contents\bootstrap-datepicker.standalone.css" />
@@ -182,6 +183,7 @@
     <Content Include="Content\blog-detail-2.html" />
     <Content Include="Content\blog-detail-3.html" />
     <Content Include="Content\blog-detail-4.html" />
+    <Content Include="Content\blog-detail-5.html" />
     <Content Include="Content\blog.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -6952,6 +6954,7 @@
     <Content Include="Content\images\blog-1.jpg" />
     <Content Include="Content\images\blog-2.jpg" />
     <Content Include="Content\images\blog-3.jpg" />
+    <Content Include="Content\images\blog-5.jpg" />
     <Content Include="Content\images\blog-bg-img.png" />
     <Content Include="Content\images\blog-detail-img.png" />
     <Content Include="Content\images\earth-from-space.jpg" />
