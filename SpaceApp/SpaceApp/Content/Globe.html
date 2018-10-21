@@ -408,7 +408,7 @@
                 launch.location = null;
                 var launchJson = JSON.stringify(launch);
                 launchJson = encodeURIComponent(launchJson);
-                if (launch.rocket.imageURL != undefined) {
+                if (launch.rocket.hasOwnProperty('imageURL')) {
                     $("#launchlist").append(`<div class="row">\
                     <div class= "col-md-12 p-t-30" >\
                     <div class="blo1">\
