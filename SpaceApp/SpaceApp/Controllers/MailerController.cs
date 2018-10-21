@@ -11,9 +11,9 @@ namespace SpaceApp.Controllers
     public class MailerController : Controller
     {
         // GET: Mailer
-        public ActionResult Index()
+        public ActionResult Send(String mail)
         {
-            Mail.Send("jansgrob@gmail.com","123","Launch this weekend!");
+            Mail.Send(mail,"123","Launch this weekend!");
             return RedirectToAction("Index","Home");
         }
     }

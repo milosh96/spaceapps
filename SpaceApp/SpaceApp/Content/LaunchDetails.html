@@ -55,11 +55,11 @@
                                 </li>
                                 
                                 <li>
-                                    <a href="launches.html">Launches</a>
+                                    <a href="Globe.html">Launches</a>
                                 </li>
                                 
                                 <li>
-                                    <a href="Globe.html">Launchspots</a>
+                                    <a href="launchspots.html">Launchspots</a>
                                 </li>
                                 
                                 <li>
@@ -181,7 +181,7 @@
                                 </p>
                                 <div class="">
                                     <div class="embed-responsive embed-responsive-16by9" style="max-height:480px;max-width:100%">
-                                        <iframe id="videoframe" class="embed-responsive-item" src="https://youtube.com/embed/Fy4TjF_zNmk" style="max-width:100%;max-height:480px;display:none"></iframe>
+                                        <iframe alt="Video is not available!" id="videoframe" class="embed-responsive-item" src="https://youtube.com/embed/Fy4TjF_zNmk" style="max-width:100%;max-height:480px;display:none"></iframe>
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +227,7 @@
             </div>
 
             <!-- Button3 -->
-            <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+            <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10" href='@ .Action("Send", "Mailer",new{mail=Request.Form["email-address"]})'>
                 Subscribe
             </button>
         </form>
