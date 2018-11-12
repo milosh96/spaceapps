@@ -6,6 +6,8 @@
         success: function (result)
         {
             var result1 = result;
+            callback(result1.launches);
+            return;
 
             var launchUrl = `http://localhost:49407/Launches/Index?dateFrom=${from}&dateTo=${to}`;
             $.ajax(launchUrl, {
